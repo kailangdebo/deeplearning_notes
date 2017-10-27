@@ -1,50 +1,100 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # deeplearning_notes
+
+-----------------
 
 ##[第一周] introduction to deep learning
 
 ### 1.1 欢迎来到深度学习工程师微专业
+
 ### 1.2 什么是神经网络？
 
 ### 1.3 用神经网络进行监督学习
 
-* 三种监督学习
-> standard NN、Convolutional NN、Recurrent NN
-
-* structured data & unstructured data
-> 有否清晰的定义（）。音频、图像、文字就是非结构化数据。
+- `三种监督学习`
+- standard NN、Convolutional NN、Recurrent NN
+- `structured data & unstructured data`
+- 有否清晰的定义（）。音频、图像、文字就是非结构化数据。
 
 ### 1.4 为什么深度学习会兴起？
-> 数据规模影响神经网络的训练。训练集不大的时候，机器学习其它算法都差不多。训练集大的时候，NN有优势
-![](images/屏幕快照 2017-10-24 下午1.02.00.png)
 
-* data
-* computation
-* algorithms
-![](images/屏幕快照 2017-10-25 上午12.28.15.png)
-> 计算能力越快
+![](/images/0.png)
+
+- 数据规模影响神经网络的训练。训练集不大的时候，机器学习其它算法都差不多。训练集大的时候，NN有优势
+
+![](/images/1.png)
+
+- `data`
+- `computation`
+- `algorithms`
+
+计算能力越快,可迭代的速度更快。算法也能提高速度
 
 ### 1.5 关于这门课
+
+---------------------
 
 ## [第二周]神经网络基础
 
 ### 2.1 二分分类（binary classification）
 
-![](images/屏幕快照 2017-10-25 上午12.39.18.png)
+![](images/3.png)
+
+- 每张图片分红绿蓝三个矩阵。
+- `64 * 64`像素的图片，每张图片的特征向量`x.size`=64 * 64 * 3=12288，也就是 `nx`
+
+![](images/2.png)
+
+- `（x,y）`表示单独一个样本，x是`n_x`维的特征向量，y值为{0,1}
+- 训练集由`m`个训练样本组成。
+- `M_train`:训练样本个数
+- `M_test`:测试样本个数
+- 使用大写`X`表示整个数据集，size=（nx，m）
+- y.size=(1,m)
 
 ### 2.2 logistic回归
 
-> 已知x。求y_hat=P(y=1|x)
-> output--> y_hat=sigmoid(w_T*x+b)
->sigmoid(z) =1/(1+e^(-z))
->
+![](images/4.png)
 
-### 2.3 logistic回归损失函数
-
-### 2.4
+- `sigmoid` 	
+- 已知x。求y_hat=P(y=1|x)
+- output--> y_hat=sigmoid(w_T*x+b)
+- sigmoid(z) =1/(1+e^(-z))
 
 ### 2.3 logistic 回归损失函数
 
+![](images/5.png)
+
+- **loss function**损失函数 `L(y_hat,y)`:衡量单个训练样本上的表现。
+- **cost function**成本函数 `J(w,b)`：所有样本的损失函数
+
 ### 2.4 梯度下降法
+
+![](images/6.png)
+
+![](images/7.png)
 
 ### 2.5 导数
 
