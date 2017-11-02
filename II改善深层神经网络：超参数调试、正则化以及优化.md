@@ -15,17 +15,46 @@
 
 ![](images/39.png)
 
+- high bias :underfit
+- high variance :overfit
+
 ![](images/40.png)
 
 ### 1.3 机器学习基础
 
+![](images/41.png)
+
+- 高bias(underfit)，增强网络，选择nn
+- 高variance（overfit） ，更多数据／正则化(其实就是去掉一些影响因子的作用)
+
 ### 1.4 正则化
+
+![](images/42.png)
+
+- l2正则化：+lamda/2m  *||w||_2^2
+- l1正则化：+lamda/2m. *||w||_1 
+
+![](images/43.png)
+
+- l2 系数正则化，又称权重衰减 
+- 归根到底就是对单个w的导数*（1-d(lamda)/m）
 
 ### 1.5 为什么正则化可以减少过拟合？
 
+![](images/44.png)
+
+- z值取值范围缩小，往线性方程方向发展。
+
 ### 1.6 Dropout 正则化
 
+![](images/45.png)
+
+- keep-prob保留概率
+-  预测时不需要dropout
+
 ### 1.7 理解 Dropout
+
+
 
 ### 1.8 其他正则化方法
 
