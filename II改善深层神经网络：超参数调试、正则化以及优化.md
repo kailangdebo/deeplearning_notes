@@ -58,17 +58,62 @@
 
 ### 1.8 其他正则化方法
 
+![](images/46.png)
+
+- 数据增广
+
+![](images/47.png)
+
+- early stopping
 ### 1.9 正则化输入
+
+![](images/48.png)
+
+![](images/49.png)
+
+- 归一化
 
 ### 1.10 梯度消失与梯度爆炸
 
+![](images/50.png)
+
+- 权重只比1（单位矩阵）大一点，深度神经的激活函数将呈爆炸式增长。
+- 如果W只比1略小一点，函数将以指数式递减
+
 ### 1.11 神经网络的权重初始化
+
+![](images/51.png)
+
+- 目的。降低梯度消失或爆炸现象。
+- 使w不会比1大很多或小很多。所以初始化w*（1/n）
+- W[l]=np.random.randn(shape)*np.sqrt(2/n[l-1])
+- xavier初始化。除了使用relu，野适用tanh
 
 ### 1.12 梯度的数值逼近
 
+![](images/52.png)
+
+- 这是梯度检验的前提
+- 已知双边误差f(x+&)-f(x-&)/2*&  与f(x)的导数g(x)近似逼近。。相差误差O(&)
+
 ### 1.13 梯度检验
 
+![](images/53.png)
+
+- 目的：检验backprop的实施是否正确
+- J(w[1],b[1],w[2]......)=J(sigma)
+- dW[1]/db[1]/dW[2].....=dsigma
+- J(sigma).shape=dJ(sigma).shape
+- dsigma===dJ(sigma)之间的关系？
+
+![](images/54.png)
+
+- 因为，计算dsigma_appro[i] 约等于 dsigma[i]
+- 检查sum(dsigma_appro-dsigma)^2
+
 ### 1.14 关于梯度检验实现的注记
+
+![](images/55.png)
 
 ##第二周 优化算法
 
