@@ -219,3 +219,49 @@
 
 ### 4.8 这和大脑有什么关系？
 
+
+
+### 5.0 自己总结
+![](images/zonjie.png)
+
+同时对10个数据求导
+
+	#g(x)
+	def sigmoid(x):
+	    return 1/(1+np.exp(-x))
+	
+	#g(x)求导
+	def dsigmoid(x):
+	    return np.exp(-x)/(1+np.exp(-x))**2
+	
+	#监督数据
+	X=np.random.random([3,10])
+	Y=np.random.random([1,10])
+	
+	#初始化
+	W1=np.random.random([4,3])*0.01
+	W2=np.random.random([1,4])*0.01
+	b1=np.zeros([4,1])
+	b2=np.zeros([1,1])
+	
+	#正向传播
+	Z1=np.dot(W1,X)+b1
+	A1=sigmoid(Z1)
+	Z2=np.dot(W2,A1)+b2
+	A2=sigmoid(Z2)
+	
+	#反向传播
+	dZ2=A2-Y
+	dW2=np.dot(A1,dZ2.transpose())/10
+	db2=np.sum(dZ2)/m
+	dZ1=np.dot(W2.transpose(),dZ2)*dsigmoid(Z1)
+	dW1=np.dot(dZ1,X.transpose())/10
+	db1=np.sum(dZ1)/m
+	
+	#梯度下降
+	W2=W2-0.01*dW2
+	b2=b2-0.01*db2
+	W1=W1-0.01*dW1
+	b1=b1-0.01*db1
+	
+	
