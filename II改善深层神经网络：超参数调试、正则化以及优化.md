@@ -162,13 +162,74 @@
 
 ### 2.6 动量梯度下降法
 
+![](images/63.png)
+
+* momentum
+* Vdw=beta * Vdw + (1-beta) * Vdw
+* Vdb=beta * Vdb + (1-beta) * Vdw
+* W=W-alfa * Vdw
+* b=b-alfa * Vdb
+
 ### 2.7 RMSprop
+
+![](images/64.png)
+
+* RMSprop
+* Sdw=beta2 * Sdw + (1-beta2) * dw^2
+* Sdb=beta2 * Sdb + (1-beta2) * db^2
+* w:=w-alfa * dw/sqrt(Sdw+cigama)
+* b:=b-alfa * db/sqrt(Sdb+cigama)
 
 ### 2.8 Adam 优化算法
 
+![](images/65.png)
+
+* Adam = momentum + RMSprop
+* Vdw=beta1 * Vdw + (1-beta1) * Vdw
+* Vdb=beta1 * Vdb + (1-beta1) * Vdw
+* Sdw=beta2 * Sdw + (1-beta2) * dw^2
+* Sdb=beta2 * Sdb + (1-beta2) * db^2
+* 修正后的
+* Vdw_=Vdw/(1-beta1^t)
+* Vdb_=Vdb/(1-beta1^t)
+* Sdw_=Sdw/(1-beta2^2)
+* Sdb_=Sdb/(1-beta2^2)
+
+* w:=w-alfa * Vdw_ /sqrt(Sdw_+cigama)
+* b:=b-alfa * Vdb_ /sqrt(Sdb_+cigama)
+
+![](images/68.png)
+
+* alfa
+* beta1:  0.9
+* beta2:	0.999
+* cigama:	10^-8
+* alfa经常需要调试，beta1\beta2一般使用缺散值，cigama并不需要设置他
+
 ### 2.9 学习率衰减
 
+![](images/66.png)
+
+* minibatch的训练,为了逐步减少后面的batch的alfa。
+* 针对batch的
+
+* 学习率衰减方法1: alfa=alfa/(1+decay_rate*epoch_num)
+* 学习率衰减方法2: 0.95^epoch_num *alfa    exponentially decay
+* 学习率衰减方法3:k*alfa/sqrt(epoch_num)
+* 学习率衰减方法4:离散
+* 手动学习率衰减
+
+![](images/67.png)
+
+* 学习率衰减不是吴恩达尝试的要点。他更愿意设定一个固定的alfa，然后好好调整。
+* 学习率衰减虽然可以加快训练的速度，但不是率先尝试的内容。
+
 ### 2.10 局部最优的问题
+
+![](images/69.png)
+
+* 实际上，当梯度为0时，往往不是在local minimum。而是在鞍点saddle point。所以不用担心落到局部最优点。
+* 高纬度，更有可能碰到鞍点。
 
 ##第三周 超参数调试、Batch正则化和程序框架
 
