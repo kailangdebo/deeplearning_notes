@@ -307,18 +307,70 @@
 
 ### 3.4 正则化网络的激活函数
 
+![](images/77.png)
+
+* 要训练w_2,b_2,一般normalization z_2（输入值未非线性化）
+
 * `batch normalization`
 	* 使超参数搜索变得容易许多。
 	* 使神经网络对超参数的选择更加稳定
 	* 超参数的范围会更庞大，并加速试验过程
 
+![](images/78.png)
+
+* gama/beta 控制normalization的方差和平均值。
+
 ### 3.5 将 Batch Norm 拟合进神经网络
+
+![](images/79.png)
+
+* 得到z_1后，将他batchNorm（bn归一化）（依据garma／beta两参数对它归一化）变成z_tilde
+* normilazation的beta与用于momentum/adam/rmsprop算法的beta不一样。只是两个作者都用beta
+* 要训练的参数救变成w/b/gama/beta........
+
+![](images/80.png)
+
+* 因为计算normalizate时需要-平均数，所以b常数通常可以忽略不用管。
+* z=w*a     z_nor=     z_~=gamar * z_nor +beta
+
+![](images/81.png)
+
+* 如何在minibatch实现batch——norm？
+	* 首先对于每一个minibatch，计算每一个batch的前向反馈计算。
+		* 使用z_~代替 z
+	* 使用反向计算dw,dbeta,dgarma
+	* 更新 w=w-alfa * dw.  beta=beta-alafa * dbeta, gama=gama-alfa * dgarma
 
 ### 3.6 Batch Norm 为什么奏效？
 
+![](images/82.png)
+
+* 削减了前层参数对后层参数的影响，避免了covariate shift的问题
+* 归一化保证了即使前层参数数值变化，他们的均值和方差都不变，都必须由beta/garma决定
+
+![](images/83.png)
+
+* 归一化还有轻微的正则化效果
+* 1、只计算单个minibatch的平均值和方差。不是计算所有，有噪点
+* 所以z也有噪点
+* 所以和dropout相似，因为给隐藏单元添加了噪点，以迫使后部单元不过分依赖任何一个隐藏单元，类似于dropout，他给隐藏层增加了噪点。
+
 ### 3.7 测试时的 Batch Norm
 
+![](images/84.png)
+
+* 估算测试集隐藏单元z的值
+* 测试时不能计算minibatch的平均值和方差，所以需要单独估算平均值和方差。方法就是根据训练集估算，估算的方式有很多种，理论上你可以在最终的网络中运行整个训练集来得到平均数和方差。但在实际操作中，我们通常运用指数加权平均来追逐在训练过程中你看到的平均值和方差。
+
 ### 3.8 Softmax 回归
+
+![](images/85.png)
+
+* 设定c等于类别的个数。模型最后一层输出c个数。每个数就是该类别出现的概率p(cat|x)。所以y_大小时（4，1），且所有值加起来是1.
+
+![](images/86.png)
+
+
 
 ### 3.9 训练一个 Softmax 分类器
 
