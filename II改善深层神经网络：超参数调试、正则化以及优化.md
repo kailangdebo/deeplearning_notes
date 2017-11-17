@@ -370,13 +370,36 @@
 
 ![](images/86.png)
 
+*	z=wa+b
+*  t=e^z--->(4,1)
+*  a=e^z/sum(t)
+*  假设
+* z=[5,2,-1,3],t=[e^5,e^2,e^-1,e^3]=[148.4,7.4,0.4,20.1],sum(t)=176.3,a=t/176.3
+
+![](images/87.png)
 
 
 ### 3.9 训练一个 Softmax 分类器
 
+![](images/88.png)
+
+* softmax 与hardmax 相对应【1 0 0 0 0】。softmax映射更温柔。
+
+![](images/89.png)
+
+* softmax的loss fuction。L(y_ ,y)=-sum(y * logy_)
+* 由于y只有一个是1，其它都是0.所以上述公式其实即刻系-logy_，即使y_尽可能变大，y_最大就是1。其实这个就是最大似然估计。
+* J(....)=1/m*L(y_,y)
+
+![](images/90.png)
+
+* softmax梯度下降，一样。先前向，再反向。
+
 ### 3.10 深度学习框架
+
+![](images/91.png)
 
 ### 3.11 TensorFlow
 
-
+![](images/92.png)
 
